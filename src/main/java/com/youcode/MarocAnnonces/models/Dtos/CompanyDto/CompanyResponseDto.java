@@ -10,4 +10,7 @@ public class CompanyResponseDto {
     private String name;
     private String email;
     private String phone;
+    private String description;
+    private String image;
+    private String login;
 }

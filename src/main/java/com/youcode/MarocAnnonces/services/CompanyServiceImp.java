@@ -114,6 +114,17 @@ public class CompanyServiceImp implements CompanyService{
     }
 
     @Override
+    public Optional<CompanyDto> login(CompanyDto companyDto) {
+
+        if(companyRepository.existsByEmailAndLogin(companyDto.getEmail(),companyDto.getLogin())){
+            Company company = companyRepository.findByEmailAndLogin(companyDto.getEmail(),companyDto.getLogin()).orElse(null);
+            return Optional.ofNullable(modelMapper.map(company, CompanyDto.class));
+        }else{
+            throw new ApiRequestException("Email or login is not correct");
+        }
+    }
+
+    @Override
     public Optional<CompanyDto> update(CompanyDto item) {
 
         Company company = modelMapper.map(item, Company.class);

@@ -28,4 +28,8 @@ public class JobOffer {
     @ManyToOne
     @JoinColumn(name = "company_id")
     private Company company;
+
+    @ManyToOne
+    @JoinColumn(name = "Postulation_id")
+    private Postulation Postulation;
 }

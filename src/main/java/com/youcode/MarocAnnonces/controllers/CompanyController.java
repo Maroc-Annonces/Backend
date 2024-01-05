@@ -54,4 +54,10 @@ public class CompanyController {
 
         return companyService.update(companyDto);
     }
+
+    @PostMapping("/login")
+    public Optional<CompanyDto> login(@RequestBody CompanyDto companyDto){
+
+        return companyService.login(companyDto);
+    }
 }

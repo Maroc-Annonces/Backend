@@ -11,6 +11,7 @@ import java.util.Optional;
 
 @RestController
 @Controller
+@CrossOrigin("*")
 @RequestMapping("/api/v1/agents")
 public class AgentController {
     private  final AgentService agentService;

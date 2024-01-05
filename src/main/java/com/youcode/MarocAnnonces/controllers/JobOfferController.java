@@ -1,6 +1,8 @@
 package com.youcode.MarocAnnonces.controllers;
 
+import com.youcode.MarocAnnonces.models.Dtos.ChercheurDto.ChercheurDto;
 import com.youcode.MarocAnnonces.models.Dtos.JobOfferDto.JobOfferDto;
+import com.youcode.MarocAnnonces.models.Dtos.PostulationDto.PostulationDto;
 import com.youcode.MarocAnnonces.services.interfaces.JobOfferService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +13,7 @@ import java.util.Optional;
 
 @Controller
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/api/v1/jobOffers")
 public class JobOfferController {
     private final JobOfferService jobOfferService;
@@ -21,16 +24,13 @@ public class JobOfferController {
     }
 
     @GetMapping
-    public List<JobOfferDto> getAllJobOffers(@RequestParam(defaultValue = "0") int page,
-                                             @RequestParam(defaultValue = "2") int pageSize,
-                                             @RequestParam(defaultValue = "id") String sortBy){
+    public List<JobOfferDto> getAllJobOffers(){
 
-        return jobOfferService.getAllJobOffers(page, pageSize, sortBy);
+        return jobOfferService.getAllJobOffers();
     }
 
     @GetMapping("/{id}")
     public Optional<JobOfferDto> getJobOfferById(@PathVariable Long id){
-
         return jobOfferService.getById(id);
     }
 
@@ -45,5 +45,4 @@ public class JobOfferController {
 
         return jobOfferService.update(jobOfferDto);
     }
-
 }
